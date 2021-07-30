@@ -139,7 +139,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="ArrayADT.cpp" />
+    <ClCompile Include="ArrayADT.c" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ADTArray.h" />

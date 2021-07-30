@@ -2,16 +2,28 @@
 #include <iostream>
 #include <stdlib.h>
 
-
+using namespace std;
 
 struct Array
 {
-    int A[20];
+    int *A;
     int size;
     int length;
 
 };
+int Sum(struct Array arr)
+{
+    int sum =0;
+    for ( int i = 0; i < arr.length; i++)
+    {
+        
 
+        sum = sum + arr.A[i];
+
+        
+    }
+    return sum;
+}
 void Display(struct Array arr)
 {
     int i;

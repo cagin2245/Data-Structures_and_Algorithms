@@ -10,7 +10,7 @@
 
 int main() {
 	
-	const vector<vector<int>> graphMatrix = {
+	/*const vector<vector<int>> graphMatrix = {
 		{0,1,0,1,0},{1,0,1,1,0},{
 			0,1,0,1,0},{1,1,1,0,1},{0,0,0,1,0}
 	};
@@ -18,7 +18,7 @@ int main() {
 
 	GraphColoring grafRenklendirme(graphMatrix, renkSayisi);
 	grafRenklendirme();
-
-	return 0;
+	*/
+	
 	
 }

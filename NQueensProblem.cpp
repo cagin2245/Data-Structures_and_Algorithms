@@ -92,7 +92,7 @@ QueensProblem::QueensProblem(int _numOfQueens):numofQueens(_numOfQueens)
 	{
 		
 		int x;
-		cout << "Please enter the size of the chess table: ";
+		cout << "Satranc tahtasinin buyuklugunu giriniz: ";
 		cin >> x;
 		QueensProblem problem{ x };
 		problem.cozum();

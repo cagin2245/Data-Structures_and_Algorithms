@@ -8,13 +8,17 @@ class GraphColoring {
 	int renkSayisi;
 	vector<int> renkler;
 
+
 public:
+	GraphColoring() {};
 	GraphColoring(const vector<vector<int>>& graph, int _renkSayisi);
 	
 		// problem çözümü 
 		void operator()();
+		void initProgram();
 	
 private:
+	
 	// renkleri recursive þekilde atayacak fonksiyon
 	bool solve(size_t nodeIndex);
 

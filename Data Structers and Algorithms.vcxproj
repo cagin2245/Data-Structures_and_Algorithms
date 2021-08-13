@@ -141,11 +141,13 @@
   <ItemGroup>
     <ClInclude Include="ADTArray.h" />
     <ClInclude Include="GraphColoring.h" />
+    <ClInclude Include="KnightTour.h" />
     <ClInclude Include="NQueensProblem.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ArrayADT.cpp" />
     <ClCompile Include="coloringProblem.cpp" />
+    <ClCompile Include="KnightTour.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="NQueensProblem.cpp" />
   </ItemGroup>

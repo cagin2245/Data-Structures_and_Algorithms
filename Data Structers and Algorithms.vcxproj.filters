@@ -27,6 +27,9 @@
     <ClInclude Include="KnightTour.h">
       <Filter>Source Files</Filter>
     </ClInclude>
+    <ClInclude Include="Queue.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ArrayADT.cpp">

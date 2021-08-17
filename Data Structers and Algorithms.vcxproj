@@ -141,17 +141,21 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="ADTArray.h" />
+    <ClInclude Include="DoubleLL.h" />
     <ClInclude Include="GraphColoring.h" />
     <ClInclude Include="KnightTour.h" />
+    <ClInclude Include="Linked_Lists.h" />
     <ClInclude Include="NQueensProblem.h" />
     <ClInclude Include="Queue.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ArrayADT.cpp" />
+    <ClCompile Include="bst.cpp" />
     <ClCompile Include="coloringProblem.cpp" />
     <ClCompile Include="KnightTour.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="NQueensProblem.cpp" />
+    <ClCompile Include="stack_arr.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

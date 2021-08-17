@@ -9,10 +9,6 @@
 #include "KnightTour.h"
 
 
-int main() {
-	
-	
-	
-	
-	
-}
+
+
+

@@ -30,6 +30,12 @@
     <ClInclude Include="Queue.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Linked_Lists.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="DoubleLL.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ArrayADT.cpp">
@@ -45,6 +51,12 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="KnightTour.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="stack_arr.h">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="bst.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

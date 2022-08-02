@@ -4,66 +4,36 @@
 
 using namespace std;
 
+template <typename T>
 class Array
 {
 private:
-    int* A;
+    T* A;
     int size;
     int length=0;
 
 
 public:
-    Array() {
+template <typename T>
+    Array(T A ) {
         size = 10;
         length = 0;
         A = new int[size];
     }
-    Array(int sz)
+    template <typename T>
+    Array(T A ,int sz)
     {
         size = sz;
         length = 0;
         A = new int[size];
     }
+    template <typename T>
     ~Array()
     {
         delete[]A;
     }
-    void Display();
-    void Append(int x);
-    void Insert(int index, int x);
-    int Delete(int index);
-    int LinearSearch( int key);
-    int LinearSearchM1( int key);
-    int LinearSearchM2(int key);
-    int BinarySearch(int key);
-   // int RBinarySearch(int a[], int l, int h, int key);
-    void InsertSort (int x);
-    int isSorted();
-    void REarrange();
-    Array* Merge(Array arr2);
-    Array* Union(Array arr2);
-    Array* Intersection(Array arr2);
-    Array* Difference(Array arr2);
-    int Sum();
-    void arrayInit();
-
-
-};
-
-int Array::Sum()
-{
-    int sum = 0;
-    for (int i = 0; i < length; i++)
-    {
-
-
-        sum = sum + A[i];
-
-
-    }
-    return sum;
-}
-    void Array::Display()
+    template <typename T>
+    Array<T>::Array::Display()
     {
         int i;
         cout << "\nElements are \n" << endl;
@@ -71,13 +41,15 @@ int Array::Sum()
             cout << A[i] << endl;
 
     }
-    void Array::Append(int x)
+    template <typename T>
+    Array<T>::Append(T x)
     {
         if (length < size)
             A[length++] = x;
 
     }
-    void Array::Insert(int index, int x)
+    template <typename T>
+    Array<T>::Insert(int index, T x)
     {
         int i;
         if (index >= 0 && index <= length)
@@ -91,7 +63,8 @@ int Array::Sum()
 
         }
     }
-    int Array::Delete(int index)
+    template <typename T>
+    Array<T>::Delete(int index)
     {
         int x = 0;
         int i;
@@ -108,8 +81,8 @@ int Array::Sum()
         }
 
     }
-
-    int Array::LinearSearch( int key)
+    template <typename T>
+    Array<T>::LinearSearch( T key)
     {
         int i;
         for (i = 0; i < length; i++)
@@ -121,7 +94,8 @@ int Array::Sum()
             return -1;
         }
     }
-    int Array::LinearSearchM1( int key)
+    template <typename T>
+    Array<T>::LinearSearchM1( T key)
     {
         int i;
         for (i = 0; i < length; i++)
@@ -134,7 +108,8 @@ int Array::Sum()
             return -1;
         }
     }
-    int Array::LinearSearchM2( int key)
+    template <typename T>
+    Array<T>::LinearSearchM2( int key)
     {
         int i;
         for (i = 0; i < length; i++)
@@ -147,7 +122,8 @@ int Array::Sum()
             return -1;
         }
     }
-    int Array::BinarySearch( int key)
+    template <typename T>
+    Array<T>::BinarySearch( T key)
     {
         int l, mid, h;
         l = 0;
@@ -172,24 +148,9 @@ int Array::Sum()
         }
         return -1;
     }
-    int RBinarySearch(int a[], int l, int h, int key)
-    {
-        int mid;
-        if (l <= h)
-        {
-            mid = (l + h) / 2;
-            if (key == a[mid])
-            {
-                return mid;
-            }
-            else if (key < a[mid])
-                return RBinarySearch(a, l, mid - 1, key);
-            else
-                return RBinarySearch(a, mid + 1, h, key);
-        }
-        return -1;
-    }
-    void Array::InsertSort(int x)
+   // int RBinarySearch(int a[], int l, int h, int key);
+    template <typename T>
+    Array<T>::InsertSort(T x)
     {
         int i = length - 1;
         if (length == size)
@@ -202,7 +163,8 @@ int Array::Sum()
         A[i + 1] = x;
         length++;
     }
-    int Array::isSorted()
+    template <typename T>
+    Array<T>::isSorted()
     {
         int i;
         for (i = 0; i < length - 1; i++)
@@ -213,7 +175,8 @@ int Array::Sum()
         }
         return 1;
     }
-    void Array::REarrange()
+    template <typename T>
+    void Array<T>::REarrange()
     {
         int i, j;
         i = 0;
@@ -225,113 +188,26 @@ int Array::Sum()
             if (i < j)swap(A[i], A[j]);
         }
     }
-    Array* Array::Merge(Array arr2)
+    template<typename ValueT>
+    Array* Merge(Array arr2);
+    Array* Union(Array arr2);
+    Array* Intersection(Array arr2);
+    Array* Difference(Array arr2);
+    template <typename T>
+    Array<T>::Sum()
+{
+    int sum = 0;
+    for (int i = 0; i < length; i++)
     {
-        int i, j, k;
-        i = j = k = 0;
-        Array* arr3 = new Array(length + arr2.length);
-        while (i < length && j < arr2.length) {
-            if (A[i] < arr2.A[j]) {
-                arr3->A[k++] = A[i++];
-            }
-            else
-            {
-                arr3->A[k++] = arr2.A[j++];
-            }
-        }
-        for (; i <length; i++)
-        {
-            arr3->A[k++] = A[i];
-        }
-        for (; j < arr2.length; j++)
-        {
-            arr3->A[k++] = arr2.A[j];
-        }
-        arr3->length = length + arr2.length;
-        arr3->size = 10;
-        return arr3;
-    }
-    Array* Array::Union(Array arr2)
-    {
-        int i, j, k;
-        i = j = k = 0;
-        Array* arr3 = new Array(length + arr2.length);
-        while (i < length && j < arr2.length) {
-            if (A[i] < arr2.A[j]) {
-                arr3->A[k++] = A[i++];
-            }
-            else if (arr2.A[j] < A[i])
-            {
-                arr3->A[k++] = arr2.A[j++];
-            }
-            else {
-                arr3->A[k++] = A[i++];
-                j++;
-            }
-        }
-        for (; i < length; i++)
-        {
-            arr3->A[k++] = A[i];
-        }
-        for (; j < arr2.length; j++)
-        {
-            arr3->A[k++] = arr2.A[j];
-        }
-        arr3->length = k;
-        arr3->size = 10;
-        return arr3;
-    }
-    Array* Array::Intersection(Array arr2)
-    {
-        int i, j, k;
-        i = j = k = 0;
-        Array* arr3 = new Array(length + arr2.length);
-        while (i < length && j < arr2.length) {
-            if (A[i] < arr2.A[j]) {
-                i++;
-            }
-            else if (arr2.A[j] < A[i])
-            {
-                j++;
-            }
-            else if (A[i] == arr2.A[j]) {
-                arr3->A[k++] = A[i++];
-                j++;
-            }
-        }
 
-        arr3->length = k;
-        arr3->size = 10;
-        return arr3;
-    }
-    Array* Array::Difference(Array arr2)
-    {
-        int i, j, k;
-        i = j = k = 0;
-        Array* arr3 = new Array(length + arr2.length);
-        while (i < length && j < arr2.length) {
-            if (A[i] < arr2.A[j]) {
-                arr3->A[k++] = A[i++];
-            }
-            else if (arr2.A[j] < A[i])
-            {
-                j++;
-            }
-            else {
-                i++;
-                j++;
-            }
-        }
-        for (; i < length; i++)
-        {
-            arr3->A[k++] = A[i];
-        }
 
-        arr3->length = k;
-        arr3->size = 10;
-        return arr3;
+        sum = sum + A[i];
+
+
     }
-    void Array::arrayInit() {
+    return sum;
+}
+    void Array<T>::arrayInit() {
         Array* arr1 = new Array;
         int ch, x, index, sz;
         printf("Enter Size of an Array");
@@ -378,3 +254,124 @@ int Array::Sum()
             }
         } while (ch < 6);
     }
+
+
+
+};
+
+    
+    
+    template <typename T>
+    Array<T>* Merge(Array<T> arr2)
+    {
+        int i, j, k;
+        i = j = k = 0;
+        Array* arr3 = new Array(length + arr2.length);
+        while (i < length && j < arr2.length) {
+            if (A[i] < arr2.A[j]) {
+                arr3->A[k++] = A[i++];
+            }
+            else
+            {
+                arr3->A[k++] = arr2.A[j++];
+            }
+        }
+        for (; i <length; i++)
+        {
+            arr3->A[k++] = A[i];
+        }
+        for (; j < arr2.length; j++)
+        {
+            arr3->A[k++] = arr2.A[j];
+        }
+        arr3->length = length + arr2.length;
+        arr3->size = 10;
+        return arr3;
+    }
+    template <typename T>
+    Array<T>* Union(Array<T> arr2)
+    
+    {
+        int i, j, k;
+        i = j = k = 0;
+        Array* arr3 = new Array(length + arr2.length);
+        while (i < length && j < arr2.length) {
+            if (A[i] < arr2.A[j]) {
+                arr3->A[k++] = A[i++];
+            }
+            else if (arr2.A[j] < A[i])
+            {
+                arr3->A[k++] = arr2.A[j++];
+            }
+            else {
+                arr3->A[k++] = A[i++];
+                j++;
+            }
+        }
+        for (; i < length; i++)
+        {
+            arr3->A[k++] = A[i];
+        }
+        for (; j < arr2.length; j++)
+        {
+            arr3->A[k++] = arr2.A[j];
+        }
+        arr3->length = k;
+        arr3->size = 10;
+        return arr3;
+    }
+    template <typename T>
+    Array<T>* Intersection(Array<T> arr2)
+    
+    {
+        int i, j, k;
+        i = j = k = 0;
+        Array* arr3 = new Array(length + arr2.length);
+        while (i < length && j < arr2.length) {
+            if (A[i] < arr2.A[j]) {
+                i++;
+            }
+            else if (arr2.A[j] < A[i])
+            {
+                j++;
+            }
+            else if (A[i] == arr2.A[j]) {
+                arr3->A[k++] = A[i++];
+                j++;
+            }
+        }
+
+        arr3->length = k;
+        arr3->size = 10;
+        return arr3;
+    }
+    template <typename T>
+    Array<T>* Difference(Array<T> arr2)
+    {
+        int i, j, k;
+        i = j = k = 0;
+        Array* arr3 = new Array(length + arr2.length);
+        while (i < length && j < arr2.length) {
+            if (A[i] < arr2.A[j]) {
+                arr3->A[k++] = A[i++];
+            }
+            else if (arr2.A[j] < A[i])
+            {
+                j++;
+            }
+            else {
+                i++;
+                j++;
+            }
+        }
+        for (; i < length; i++)
+        {
+            arr3->A[k++] = A[i];
+        }
+
+        arr3->length = k;
+        arr3->size = 10;
+        return arr3;
+    }
+    
+    

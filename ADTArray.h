@@ -14,26 +14,26 @@ private:
 
 
 public:
-template <typename T>
+
     Array(T A ) {
         size = 10;
         length = 0;
         A = new int[size];
     }
-    template <typename T>
+    
     Array(T A ,int sz)
     {
         size = sz;
         length = 0;
         A = new int[size];
     }
-    template <typename T>
+    
     ~Array()
     {
         delete[]A;
     }
-    template <typename T>
-    Array<T>::Array::Display()
+    
+    void Display(const T& t)
     {
         int i;
         cout << "\nElements are \n" << endl;
@@ -41,15 +41,15 @@ template <typename T>
             cout << A[i] << endl;
 
     }
-    template <typename T>
-    Array<T>::Append(T x)
+    
+    void Append(const T& x)
     {
         if (length < size)
             A[length++] = x;
 
     }
-    template <typename T>
-    Array<T>::Insert(int index, T x)
+    
+    void Insert(int index, const T& x)
     {
         int i;
         if (index >= 0 && index <= length)
@@ -63,8 +63,14 @@ template <typename T>
 
         }
     }
-    template <typename T>
-    Array<T>::Delete(int index)
+    
+    Array getA(){
+        return A;
+    }
+    int getLength(){
+        return length;
+    }
+    Array Delete(int index, const T& t)
     {
         int x = 0;
         int i;
@@ -81,8 +87,8 @@ template <typename T>
         }
 
     }
-    template <typename T>
-    Array<T>::LinearSearch( T key)
+    
+    Array LinearSearch( const T& key)
     {
         int i;
         for (i = 0; i < length; i++)
@@ -94,8 +100,8 @@ template <typename T>
             return -1;
         }
     }
-    template <typename T>
-    Array<T>::LinearSearchM1( T key)
+    
+    ArrayLinearSearchM1( const T& key)
     {
         int i;
         for (i = 0; i < length; i++)
@@ -108,8 +114,8 @@ template <typename T>
             return -1;
         }
     }
-    template <typename T>
-    Array<T>::LinearSearchM2( int key)
+    
+    Array LinearSearchM2( int key,const T& t)
     {
         int i;
         for (i = 0; i < length; i++)
@@ -122,8 +128,8 @@ template <typename T>
             return -1;
         }
     }
-    template <typename T>
-    Array<T>::BinarySearch( T key)
+    
+    Array BinarySearch( T key, const T&)
     {
         int l, mid, h;
         l = 0;
@@ -149,12 +155,12 @@ template <typename T>
         return -1;
     }
    // int RBinarySearch(int a[], int l, int h, int key);
-    template <typename T>
-    Array<T>::InsertSort(T x)
+    
+    Array InsertSort(const T& x)
     {
         int i = length - 1;
         if (length == size)
-            return;
+            return 0;
         while (i >= 0 && A[i] > x)
         {
             A[i + 1] = A[i];
@@ -163,8 +169,8 @@ template <typename T>
         A[i + 1] = x;
         length++;
     }
-    template <typename T>
-    Array<T>::isSorted()
+    
+    Array isSorted(const T& t)
     {
         int i;
         for (i = 0; i < length - 1; i++)
@@ -175,8 +181,8 @@ template <typename T>
         }
         return 1;
     }
-    template <typename T>
-    void Array<T>::REarrange()
+    
+    void REarrange(const T&t)
     {
         int i, j;
         i = 0;
@@ -193,8 +199,8 @@ template <typename T>
     Array* Union(Array arr2);
     Array* Intersection(Array arr2);
     Array* Difference(Array arr2);
-    template <typename T>
-    Array<T>::Sum()
+    
+    Array Sum(const T& t)
 {
     int sum = 0;
     for (int i = 0; i < length; i++)
@@ -207,7 +213,7 @@ template <typename T>
     }
     return sum;
 }
-    void Array<T>::arrayInit() {
+        Array arrayInit(const T& t) {
         Array* arr1 = new Array;
         int ch, x, index, sz;
         printf("Enter Size of an Array");
@@ -266,27 +272,29 @@ template <typename T>
     {
         int i, j, k;
         i = j = k = 0;
-        Array* arr3 = new Array(length + arr2.length);
+        Array A = arr2.getA();
+        int length = arr2.getLength();
+        arr2 = new Array(length + arr2.length);
         while (i < length && j < arr2.length) {
             if (A[i] < arr2.A[j]) {
-                arr3->A[k++] = A[i++];
+                arr2->A[k++] = A[i++];
             }
             else
             {
-                arr3->A[k++] = arr2.A[j++];
+                arr2->A[k++] = arr2.A[j++];
             }
         }
         for (; i <length; i++)
         {
-            arr3->A[k++] = A[i];
+            arr2->A[k++] = A[i];
         }
         for (; j < arr2.length; j++)
         {
-            arr3->A[k++] = arr2.A[j];
+            arr2->A[k++] = arr2.A[j];
         }
-        arr3->length = length + arr2.length;
-        arr3->size = 10;
-        return arr3;
+        arr2->length = length + arr2.length;
+        arr2->size = 10;
+        return arr2;
     }
     template <typename T>
     Array<T>* Union(Array<T> arr2)
@@ -294,31 +302,33 @@ template <typename T>
     {
         int i, j, k;
         i = j = k = 0;
-        Array* arr3 = new Array(length + arr2.length);
+        Array A = arr2.getA();
+        int length = arr2.getLength();
+        arr2 = new Array(length + arr2.length);
         while (i < length && j < arr2.length) {
             if (A[i] < arr2.A[j]) {
-                arr3->A[k++] = A[i++];
+                arr2->A[k++] = A[i++];
             }
             else if (arr2.A[j] < A[i])
             {
-                arr3->A[k++] = arr2.A[j++];
+                arr2->A[k++] = arr2.A[j++];
             }
             else {
-                arr3->A[k++] = A[i++];
+                arr2->A[k++] = A[i++];
                 j++;
             }
         }
         for (; i < length; i++)
         {
-            arr3->A[k++] = A[i];
+            arr2->A[k++] = A[i];
         }
         for (; j < arr2.length; j++)
         {
-            arr3->A[k++] = arr2.A[j];
+            arr2->A[k++] = arr2.A[j];
         }
-        arr3->length = k;
-        arr3->size = 10;
-        return arr3;
+        arr2->length = k;
+        arr2->size = 10;
+        return arr2;
     }
     template <typename T>
     Array<T>* Intersection(Array<T> arr2)
@@ -326,7 +336,9 @@ template <typename T>
     {
         int i, j, k;
         i = j = k = 0;
-        Array* arr3 = new Array(length + arr2.length);
+        Array A = arr2.getA();
+        int length = arr2.getLength();
+        arr2 = new Array(length + arr2.length);
         while (i < length && j < arr2.length) {
             if (A[i] < arr2.A[j]) {
                 i++;
@@ -336,24 +348,26 @@ template <typename T>
                 j++;
             }
             else if (A[i] == arr2.A[j]) {
-                arr3->A[k++] = A[i++];
+                arr2->A[k++] = A[i++];
                 j++;
             }
         }
 
-        arr3->length = k;
-        arr3->size = 10;
-        return arr3;
+        arr2->length = k;
+        arr2->size = 10;
+        return arr2;
     }
     template <typename T>
     Array<T>* Difference(Array<T> arr2)
     {
         int i, j, k;
         i = j = k = 0;
-        Array* arr3 = new Array(length + arr2.length);
+        Array A = arr2.getA();
+        int length = arr2.getLength();
+        arr2 = new Array(length + arr2.length);
         while (i < length && j < arr2.length) {
             if (A[i] < arr2.A[j]) {
-                arr3->A[k++] = A[i++];
+                arr2->A[k++] = A[i++];
             }
             else if (arr2.A[j] < A[i])
             {
@@ -366,12 +380,12 @@ template <typename T>
         }
         for (; i < length; i++)
         {
-            arr3->A[k++] = A[i];
+            arr2->A[k++] = A[i];
         }
 
-        arr3->length = k;
-        arr3->size = 10;
-        return arr3;
+        arr2->length = k;
+        arr2->size = 10;
+        return arr2;
     }
     
     

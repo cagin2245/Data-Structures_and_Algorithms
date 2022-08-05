@@ -15,17 +15,17 @@ private:
 
 public:
 
-    Array(T A ) {
-        size = 10;
+    Array() {
+        this->size = 10;
         length = 0;
-        A = new int[size];
+        this->A = new T [size];
     }
     
-    Array(T A ,int sz)
+    Array(int sz)
     {
-        size = sz;
+        this->size = sz;
         length = 0;
-        A = new int[size];
+        this->A = new T[size];
     }
     
     ~Array()
@@ -33,7 +33,7 @@ public:
         delete[]A;
     }
     
-    void Display(const T& t)
+    void Display()
     {
         int i;
         cout << "\nElements are \n" << endl;
@@ -70,7 +70,7 @@ public:
     int getLength(){
         return length;
     }
-    Array Delete(int index, const T& t)
+    Array Delete(int index)
     {
         int x = 0;
         int i;
@@ -85,7 +85,7 @@ public:
             length--;
             return x;
         }
-
+    return 0;
     }
     
     Array LinearSearch( const T& key)
@@ -101,7 +101,7 @@ public:
         }
     }
     
-    ArrayLinearSearchM1( const T& key)
+    Array ArrayLinearSearchM1( const T& key)
     {
         int i;
         for (i = 0; i < length; i++)

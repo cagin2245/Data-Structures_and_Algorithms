@@ -9,17 +9,14 @@
 #include "KnightTour.h"
 
 #include "Matrix.h"
+#include "sparseMatrix.h"
 
 using namespace std;
 
 int main(){
 
-  Array<int>  arr(17);
-  arr.Insert(0,2354);
-  arr.Insert(1,2354);
-  arr.Insert(2,2354);
-  arr.Display();
-  arr.Delete(0);
-  arr.Display();
-    
+  Sparse s1(5,5,5);
+  s1.read();
+  s1.display();
+  return 0;
 }

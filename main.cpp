@@ -16,7 +16,7 @@ using namespace std;
 int main(){
 
   Sparse s1(5,5,5);
-  s1.read();
-  s1.display();
+  cin >> s1;
+  cout<<s1;
   return 0;
 }

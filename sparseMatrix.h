@@ -28,28 +28,35 @@ class Sparse {
         delete [] el;
     }
 
-    void read()
+friend istream & operator>>(istream &is, Sparse &s);
+friend ostream & operator<<(ostream &os, Sparse &s);
+
+
+};
+    istream & operator>>(istream &is, Sparse &s)
     {
         cout <<"0 olmayan elemanları giriniz";
-        for(int i = 0; i < num; i++)
+        for(int i = 0; i < s.num; i++)
         {
-            cin >> el[i].i>>el[i].j>>el[i].x;
+            cin >> s.el[i].i>>s.el[i].j>>s.el[i].x;
             
         }
+        return is;
     }
-    void display()
+    ostream & operator<<(ostream &os, Sparse &s)
     {
         int k = 0;
-        for(int i = 0; i<m; i++)
+        for(int i = 0; i<s.m; i++)
         {
-            for(int j= 0; j< n; j++)
+            for(int j= 0; j< s.n; j++)
             {
-                if(el[k].i==i && el[k].j ==j)
-                    cout << el[k++].x<<" ";
+                if(s.el[k].i==i && s.el[k].j ==j)
+                    cout << s.el[k++].x<<" ";
                 else
                     cout << "0 ";
             }
             cout << endl;
         }
+        return os;
     }
-};
+

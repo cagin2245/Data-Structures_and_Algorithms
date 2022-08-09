@@ -27,12 +27,42 @@ class Sparse {
     {
         delete [] el;
     }
-
+Sparse operator+(Sparse &s);
 friend istream & operator>>(istream &is, Sparse &s);
 friend ostream & operator<<(ostream &os, Sparse &s);
 
 
 };
+Sparse Sparse::operator+(Sparse &s){
+    int i,j,k;
+    if(m!=s.m || n!= s.n){
+        return Sparse(0,0,0);
+        }
+    Sparse * sum = new Sparse(s.m,s.n,s.num+s.num);
+    i=j=k=0;
+    while(i<num && j<s.num)
+    {
+        if(el[i].i<s.el[j].i)
+            sum-> el[k++] = el[i++];
+        else if(el[i].i>s.el[j].i)
+            sum-> el[k++] = s.el[j++];
+        else{
+            if(el[i].j<s.el[j].j)
+            sum-> el[k++] = el[i++];
+        else if(el[i].j>s.el[j].j)
+            sum-> el[k++] = s.el[j++];
+            else{
+                sum->el[k] = el[i];
+                sum->el[k++].x=el[i++].x+s.el[j++].x;
+            }
+        }
+
+    }
+    for(;i<num;i++) sum ->el[k++]= el[i];
+    for(;j<s.num;j++)sum -> el[k++]= s.el[j];
+    sum->num =k;
+    return *sum;
+}
     istream & operator>>(istream &is, Sparse &s)
     {
         cout <<"0 olmayan elemanları giriniz";

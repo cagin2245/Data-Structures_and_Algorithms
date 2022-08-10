@@ -22,7 +22,7 @@ Node * Dpush(Node* r, int x) {
 		return r;
 	}
 	if (r->data > x) {
-		// ilk elemandan sonra kücük durumu
+		// ilk elemandan sonra kï¿½cï¿½k durumu
 		// root degisiyor
 		Node* temp = new Node();
 		temp->data = x;

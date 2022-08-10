@@ -2,21 +2,19 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+#include "Data_Structures\ADTArray.hpp"
+#include "Data_Structures\stack.h"
 
-#include "NQueensProblem.h"
-#include "ADTArray.h"
-#include "GraphColoring.h"
-#include "KnightTour.h"
+#include "Algorithms\NQueensProblem.h"
+#include "Algorithms\GraphColoring.h"
+#include "Algorithms\KnightTour.h"
 
-#include "Matrix.h"
-#include "sparseMatrix.h"
+#include "Math\Matrix.h"
+#include "Math\sparseMatrix.h"
+#include "Math\polynomials.h"
 
 using namespace std;
 
 int main(){
 
-  Sparse s1(5,5,5);
-  cin >> s1;
-  cout<<s1;
-  return 0;
 }

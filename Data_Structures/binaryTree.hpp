@@ -3,7 +3,7 @@
 #include <memory>
 #include <fstream>
 #include <vector>
-#include <utility>
+
 
 
 using std::cout, std::endl;
@@ -19,11 +19,11 @@ void treeTraversal (const std::unique_ptr<binaryTreeNode<int>> & root)
 {
     if(root)
     {
-        cout << "Preorder: "<< root->data << endl;
+        cout << "Preorder: " << root->left.get() << endl;
 
         treeTraversal(root->left);
 
-        cout << "Inorder: " << root->right << endl;
+        cout << "Preorder: " << root->right.get() << endl;
 
         treeTraversal(root->right);
 

@@ -217,7 +217,7 @@ public:
         Array* arr1 = new Array;
         int ch, x, index, sz;
         printf("Enter Size of an Array");
-        scanf_s("%d", &sz);
+        scanf("%d", &sz);
         arr1 = new  Array(sz);
 
         do {
@@ -230,24 +230,24 @@ public:
             printf("6. Exit\n");
 
             printf("Enter your choice: ");
-            scanf_s("%d", &ch);
+            scanf("%d", &ch);
 
             switch (ch)
             {
             case 1:
                 printf("Enter an element and index: ");
-                scanf_s("%d%d", &x, &index);
+                scanf("%d%d", &x, &index);
                 arr1->Insert(index, x);
                 break;
             case 2:
                 printf("Enter Index: ");
-                scanf_s("%d", &index);
+                scanf("%d", &index);
                 x = arr1->Delete(index);
                 printf("Deleted Element is %d\n", x);
                 break;
             case 3:
                 printf("Enter element to search");
-                scanf_s("%d", &x);
+                scanf("%d", &x);
                 index = arr1->LinearSearchM1(x);
                 printf("Element index %d", index);
                 break;
